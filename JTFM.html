@@ -1,0 +1,252 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Association JTFM - Jeunes Talents Franco-Marocains</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Koulen&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Custom styles to enhance the design */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Light gray background */
+        }
+        .font-koulen {
+            font-family: 'Koulen', cursive;
+        }
+        .hero-bg {
+            /* A subtle pattern inspired by Moroccan zellige and football fields */
+            background-color: #1a202c;
+            background-image:
+                linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.8)),
+                url('https://www.transparenttextures.com/patterns/soccer.png');
+        }
+        .section-title {
+            font-family: 'Koulen', cursive;
+            letter-spacing: 1.5px;
+            color: #166534; /* Dark Moroccan Green */
+        }
+        .card-hover {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .btn-primary {
+            background-color: #c8102e; /* Vibrant French Red */
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #a60c26;
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            display: block;
+            margin-top: 5px;
+            right: 0;
+            background: #c8102e;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover:after {
+            width: 100%;
+            left: 0;
+        }
+        .social-icon {
+            transition: transform 0.2s ease-in-out;
+        }
+        .social-icon:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-gray-800">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                 <!-- Association Logo -->
+                 <img src="https://i.ibb.co/jv1CmHqn/1745246565075.jpg" alt="Association JTFM Logo" class="h-16 w-auto object-contain">
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="nav-link text-gray-600 hover:text-green-700 font-semibold">À Propos</a>
+                <a href="#actions" class="nav-link text-gray-600 hover:text-green-700 font-semibold">Nos Actions</a>
+                <a href="#president" class="nav-link text-gray-600 hover:text-green-700 font-semibold">Le Président</a>
+                <a href="#contact" class="bg-green-700 text-white px-5 py-2 rounded-full hover:bg-green-800 transition-colors font-bold">Contact</a>
+            </div>
+             <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-gray-600 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#about" class="block py-2 px-4 text-sm hover:bg-gray-100">À Propos</a>
+            <a href="#actions" class="block py-2 px-4 text-sm hover:bg-gray-100">Nos Actions</a>
+            <a href="#president" class="block py-2 px-4 text-sm hover:bg-gray-100">Le Président</a>
+            <a href="#contact" class="block py-2 px-4 text-sm hover:bg-gray-100">Contact</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-bg text-white text-center py-24 md:py-32">
+        <div class="container mx-auto px-6">
+            <h1 class="text-4xl md:text-6xl font-black uppercase font-koulen tracking-wider">Jeunes Talents Franco-Marocains</h1>
+            <p class="mt-4 text-lg md:text-xl max-w-3xl mx-auto">Construire des ponts entre les cultures, les générations et les territoires à travers le football.</p>
+            <a href="#actions" class="mt-8 inline-block btn-primary font-bold py-3 px-8 rounded-full text-lg uppercase transition-transform transform hover:scale-105">Découvrir nos missions</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl section-title">Notre Vision</h2>
+            <div class="mt-8 max-w-4xl mx-auto text-lg text-gray-700 leading-relaxed">
+                <p>
+                    L’Association JTFM – Jeunes Talents Franco-Marocains, est une structure qui œuvre pour <strong class="text-green-700">détecter, accompagner et valoriser</strong> les jeunes talents marocains à travers le monde, notamment via le football et le futsal.
+                </p>
+                <p class="mt-4">
+                    À travers cette initiative, nous construisons des ponts entre les cultures, les générations et les territoires, entre la <strong class="text-blue-800">France</strong> et le <strong class="text-red-600">Maroc</strong>, et au-delà.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Do Section -->
+    <section id="actions" class="py-20 bg-slate-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl text-center section-title">Nos Actions Clés</h2>
+            <div class="mt-12 grid md:grid-cols-3 gap-10">
+                <!-- Action 1: Detection -->
+                <div class="bg-white p-8 rounded-xl shadow-lg text-center card-hover">
+                    <div class="bg-green-100 w-20 h-20 rounded-full mx-auto flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass text-3xl text-green-700"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mt-6">Détection</h3>
+                    <p class="mt-2 text-gray-600">Nous organisons des journées de détection en France et au Maroc pour repérer les pépites de demain.</p>
+                </div>
+                <!-- Action 2: Accompaniment -->
+                <div class="bg-white p-8 rounded-xl shadow-lg text-center card-hover">
+                    <div class="bg-red-100 w-20 h-20 rounded-full mx-auto flex items-center justify-center">
+                         <i class="fa-solid fa-hands-holding-child text-3xl text-red-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mt-6">Accompagnement</h3>
+                    <p class="mt-2 text-gray-600">Nous offrons un suivi sportif, scolaire et humain pour garantir l'épanouissement complet de chaque talent.</p>
+                </div>
+                <!-- Action 3: Valorization -->
+                <div class="bg-white p-8 rounded-xl shadow-lg text-center card-hover">
+                    <div class="bg-blue-100 w-20 h-20 rounded-full mx-auto flex items-center justify-center">
+                        <i class="fa-solid fa-star text-3xl text-blue-800"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mt-6">Valorisation</h3>
+                    <p class="mt-2 text-gray-600">Nous créons des opportunités uniques (stages, tournois) pour mettre en lumière nos jeunes auprès des clubs professionnels.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- President Section -->
+    <section id="president" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+             <h2 class="text-4xl text-center section-title">Le Mot du Président</h2>
+            <div class="mt-12 max-w-5xl mx-auto md:flex items-center gap-12 bg-slate-50 p-8 rounded-lg shadow-inner">
+                <div class="md:w-1/3 text-center flex-shrink-0">
+                    <!-- President's Picture -->
+                    <img src="https://i.ibb.co/zVSv0TNz/1695780154666.jpg" alt="Photo de Zaki Manchette, président de l'Association JTFM" class="w-48 h-48 md:w-60 md:h-60 rounded-full mx-auto shadow-lg object-cover border-4 border-green-700">
+                    <h3 class="mt-4 text-2xl font-bold">Zaki MANCHETTE</h3>
+                    <p class="text-gray-500">Président Fondateur</p>
+                    <a href="https://www.linkedin.com/in/zaki-m-202258229/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 mt-2 inline-block social-icon">
+                        <i class="fab fa-linkedin fa-2x"></i>
+                    </a>
+                </div>
+                <div class="md:w-2/3 mt-6 md:mt-0">
+                    <p class="text-lg text-gray-700 italic leading-relaxed">
+                        "Mon parcours a commencé modestement, comme bénévole passionné dans le football amateur. Pendant près de 15 ans, j'ai gravi les échelons : dirigeant, secrétaire, et même président par intérim à l'USB Longwy, puis vice-président à Beuveille. Chaque étape m'a permis de comprendre les rouages et les besoins réels sur le terrain.
+                        <br><br>
+                        Un séminaire à Dubaï avec des figures comme Luis Fernandez et Eric Olhats a élargi ma vision et renforcé ma détermination. Aujourd'hui, après avoir développé l'événementiel à l'ES Fameck, je concrétise un rêve : l'Association des Jeunes Talents Franco-Marocains. C'est l'aboutissement d'une vie dédiée au football, avec la conviction profonde que nous pouvons offrir un avenir à nos jeunes talents U17/U20/U23, en France et au-delà."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-800 text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center">
+                <h2 class="text-4xl font-koulen tracking-wider">Entrez en Contact</h2>
+                <p class="mt-2 text-gray-300">Une question ? Un partenariat ? Envie de nous soutenir ? Écrivez-nous !</p>
+            </div>
+
+            <!-- Contact Details -->
+            <div class="mt-10 flex flex-col md:flex-row justify-center items-center gap-8 text-center">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-phone text-green-400 text-xl"></i>
+                    <a href="tel:+33778762571" class="hover:text-green-400">+33 7 78 76 25 71</a>
+                </div>
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-envelope text-green-400 text-xl"></i>
+                    <a href="mailto:ajtfmff.contact@gmail.com" class="hover:text-green-400">ajtfmff.contact@gmail.com</a>
+                </div>
+                 <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-envelope text-green-400 text-xl"></i>
+                    <a href="mailto:zakimanchette@outlook.fr" class="hover:text-green-400">zakimanchette@outlook.fr</a>
+                </div>
+            </div>
+
+            <div class="mt-12 max-w-2xl mx-auto">
+                <form action="#" method="POST" class="space-y-6">
+                    <div>
+                        <label for="name" class="sr-only">Nom</label>
+                        <input type="text" name="name" id="name" placeholder="Votre nom complet" class="w-full bg-gray-700 border-gray-600 rounded-md py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-green-500">
+                    </div>
+                    <div>
+                        <label for="email" class="sr-only">Email</label>
+                        <input type="email" name="email" id="email" placeholder="Votre adresse e-mail" class="w-full bg-gray-700 border-gray-600 rounded-md py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-green-500">
+                    </div>
+                    <div>
+                        <label for="message" class="sr-only">Message</label>
+                        <textarea name="message" id="message" rows="5" placeholder="Votre message" class="w-full bg-gray-700 border-gray-600 rounded-md py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-green-500"></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="w-full md:w-auto btn-primary font-bold py-3 px-12 rounded-full text-lg uppercase transition-transform transform hover:scale-105">Envoyer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 Association JTFM. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script for mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+</body>
+</html>
