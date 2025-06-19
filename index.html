@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -14,6 +14,7 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f8fafc; /* Light gray background */
+            scroll-behavior: smooth;
         }
         .font-koulen {
             font-family: 'Koulen', cursive;
@@ -70,6 +71,77 @@
         .social-icon:hover {
             transform: scale(1.2);
         }
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 0.75rem;
+            cursor: pointer;
+        }
+        .gallery-item img {
+            transition: transform 0.4s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Quote Styles */
+        .royal-quote {
+            border-left: 4px solid #c8102e; /* Moroccan Red */
+            padding-left: 1.5rem;
+            margin-top: 2rem;
+            font-style: italic;
+            color: #374151;
+        }
+        .institutional-quote {
+            border-left: 4px solid #166534; /* JTFM Green */
+            padding-left: 1.5rem;
+            margin-top: 2rem;
+            background-color: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+        }
+
+        /* Lightbox Styles */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .lightbox.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+        .lightbox-close, .lightbox-prev, .lightbox-next {
+            position: absolute;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            z-index: 1001;
+            background-color: rgba(0,0,0,0.3);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .lightbox-close { top: 20px; right: 30px; }
+        .lightbox-prev { top: 50%; left: 20px; transform: translateY(-50%); }
+        .lightbox-next { top: 50%; right: 20px; transform: translateY(-50%); }
     </style>
 </head>
 <body class="bg-slate-50 text-gray-800">
@@ -79,9 +151,10 @@
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-3">
                  <!-- Association Logo -->
-                 <img src="https://i.ibb.co/jv1CmHqn/1745246565075.jpg" alt="Association JTFM Logo" class="h-16 w-auto object-contain">
+                 <img src="https://i.ibb.co/jv1CmHqn/1745246565075.jpg" alt="Association JTFM Logo" class="h-16 w-auto object-contain" onerror="this.onerror=null;this.src='https://placehold.co/100x100/333/fff?text=Logo';">
             </div>
             <div class="hidden md:flex items-center space-x-8">
+                <a href="#event" class="nav-link text-gray-600 hover:text-green-700 font-semibold">Événement</a>
                 <a href="#about" class="nav-link text-gray-600 hover:text-green-700 font-semibold">À Propos</a>
                 <a href="#actions" class="nav-link text-gray-600 hover:text-green-700 font-semibold">Nos Actions</a>
                 <a href="#president" class="nav-link text-gray-600 hover:text-green-700 font-semibold">Le Président</a>
@@ -96,6 +169,7 @@
         </nav>
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#event" class="block py-2 px-4 text-sm hover:bg-gray-100">Événement</a>
             <a href="#about" class="block py-2 px-4 text-sm hover:bg-gray-100">À Propos</a>
             <a href="#actions" class="block py-2 px-4 text-sm hover:bg-gray-100">Nos Actions</a>
             <a href="#president" class="block py-2 px-4 text-sm hover:bg-gray-100">Le Président</a>
@@ -107,28 +181,115 @@
     <section class="hero-bg text-white text-center py-24 md:py-32">
         <div class="container mx-auto px-6">
             <h1 class="text-4xl md:text-6xl font-black uppercase font-koulen tracking-wider">Jeunes Talents Franco-Marocains</h1>
-            <p class="mt-4 text-lg md:text-xl max-w-3xl mx-auto">Construire des ponts entre les cultures, les générations et les territoires à travers le football.</p>
-            <a href="#actions" class="mt-8 inline-block btn-primary font-bold py-3 px-8 rounded-full text-lg uppercase transition-transform transform hover:scale-105">Découvrir nos missions</a>
+            <p class="mt-4 text-lg md:text-xl max-w-4xl mx-auto text-gray-200 italic">« Notre vision suit la voie tracée par Sa Majesté le Roi Mohammed VI : faire du football un moteur de développement, de cohésion et de rayonnement du Maroc dans le monde. »</p>
+            <a href="#event" class="mt-8 inline-block btn-primary font-bold py-3 px-8 rounded-full text-lg uppercase transition-transform transform hover:scale-105">Découvrir notre dernier événement</a>
+        </div>
+    </section>
+
+    <!-- Event Section -->
+    <section id="event" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl text-center section-title">Retour sur l'Événement JTFM – 8 & 9 Juin 2024</h2>
+            <div class="mt-8 max-w-4xl mx-auto text-center text-lg text-gray-700 leading-relaxed">
+                <p>Les 8 et 9 juin 2024, l’Association JTFM a organisé un événement sportif d’envergure réunissant de jeunes talents marocains et franco-marocains de toute la France, pour un week-end de détection, valorisation et mise en lumière des futurs espoirs du football.</p>
+            </div>
+
+            <!-- Event Details -->
+            <div class="mt-12 max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">🎯 Objectifs Atteints :</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-600">
+                        <li>Repérage de profils prometteurs au sein de la diaspora marocaine.</li>
+                        <li>Vitrine de visibilité exceptionnelle pour les jeunes joueurs.</li>
+                        <li>Renforcement des liens culturels, sportifs et fraternels entre la France et le Maroc.</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-100 p-6 rounded-lg shadow-inner">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">⚽️ Au Programme du Week-end :</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start"><i class="fa-solid fa-futbol text-green-600 mr-3 mt-1"></i><span>Des matchs de détection très disputés.</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-users text-green-600 mr-3 mt-1"></i><span>Participation d'équipes de joueurs de 16 à 21 ans.</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-handshake-angle text-green-600 mr-3 mt-1"></i><span>Une ambiance conviviale, fraternelle et compétitive.</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-star text-green-600 mr-3 mt-1"></i><span>Présence de personnalités du football amateur et professionnel.</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="max-w-5xl mx-auto">
+                <blockquote class="institutional-quote text-gray-600">
+                    <p class="font-semibold text-lg">« Inspirée par la vision éclairée de Sa Majesté le Roi Mohammed VI, qui fait du sport un levier de développement humain, d’inclusion et de rayonnement international, notre association s’inscrit dans une démarche structurée, ambitieuse et durable, fidèle à l’esprit d’innovation, de mérite et d’unité que porte le football marocain à l’échelle mondiale. »</p>
+                    <cite class="block text-right mt-4 font-bold text-green-700">— AJTM, Projet 2025–2030</cite>
+                </blockquote>
+            </div>
+
+            <!-- Video Section -->
+             <div class="mt-20">
+                <h3 class="text-3xl text-center section-title mb-10">L'Événement en Vidéo</h3>
+                <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                    <!-- Video 1: Replace the sample URL with your actual video file URL -->
+                    <div class="rounded-lg shadow-xl overflow-hidden bg-black">
+                        <video controls class="w-full aspect-video object-cover" poster="https://placehold.co/1920x1080/1a202c/ffffff?text=Vid%C3%A9o+1">
+                            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                            <source src="https://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg">
+                            Votre navigateur ne supporte pas la balise vidéo.
+                        </video>
+                    </div>
+                     <!-- Video 2: Replace the sample URL with your actual video file URL -->
+                    <div class="rounded-lg shadow-xl overflow-hidden bg-black">
+                        <video controls class="w-full aspect-video object-cover" poster="https://placehold.co/1920x1080/1a202c/ffffff?text=Vid%C3%A9o+2">
+                            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                            <source src="https://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg">
+                            Votre navigateur ne supporte pas la balise vidéo.
+                        </video>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photo Gallery -->
+            <div class="mt-20">
+                <h3 class="text-3xl text-center section-title mb-10">Galerie de l'Événement</h3>
+                <div id="photo-gallery" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                    <div class="gallery-item"><img src="https://placehold.co/400x400/e0e0e0/333?text=Joueur+1" alt="Photo de l'événement 1" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/400x400/d6d6d6/333?text=Joueur+2" alt="Photo de l'événement 2" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/400x400/cccccc/333?text=Action" alt="Photo de l'événement 3" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/400x400/c2c2c2/333?text=Talent" alt="Photo de l'événement 4" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/400x400/b8b8b8/333?text=JTFM" alt="Photo de l'événement 5" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/400x400/afafaf/333?text=Equipe" alt="Photo de l'événement 6" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/400x400/a5a5a5/333?text=But" alt="Photo de l'événement 7" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/400x400/9b9b9b/333?text=Match" alt="Photo de l'événement 8" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/400x400/919191/333?text=Détection" alt="Photo de l'événement 9" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/400x400/878787/333?text=Joueur+3" alt="Photo de l'événement 10" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/400x400/7d7d7d/fff?text=Staff" alt="Photo de l'événement 11" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/400x400/737373/fff?text=Espoir" alt="Photo de l'événement 12" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/400x400/696969/fff?text=France" alt="Photo de l'événement 13" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/400x400/5f5f5f/fff?text=Maroc" alt="Photo de l'événement 14" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/400x400/555555/fff?text=Passion" alt="Photo de l'événement 15" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/400x400/4b4b4b/fff?text=Rêve" alt="Photo de l'événement 16" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/400x400/414141/fff?text=Football" alt="Photo de l'événement 17" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item"><img src="https://placehold.co/400x400/373737/fff?text=Avenir" alt="Photo de l'événement 18" class="w-full h-full object-cover"></div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
+    <section id="about" class="py-20 bg-slate-50">
         <div class="container mx-auto px-6 text-center">
             <h2 class="text-4xl section-title">Notre Vision</h2>
             <div class="mt-8 max-w-4xl mx-auto text-lg text-gray-700 leading-relaxed">
                 <p>
-                    L’Association JTFM – Jeunes Talents Franco-Marocains, est une structure qui œuvre pour <strong class="text-green-700">détecter, accompagner et valoriser</strong> les jeunes talents marocains à travers le monde, notamment via le football et le futsal.
+                    L’Association JTFM est une structure qui œuvre pour <strong class="text-green-700">détecter, accompagner et valoriser</strong> les jeunes talents marocains à travers le monde, via le football et le futsal. À travers cette initiative, nous construisons des ponts entre les cultures et les générations, entre la <strong class="text-blue-800">France</strong> et le <strong class="text-red-600">Maroc</strong>.
                 </p>
-                <p class="mt-4">
-                    À travers cette initiative, nous construisons des ponts entre les cultures, les générations et les territoires, entre la <strong class="text-blue-800">France</strong> et le <strong class="text-red-600">Maroc</strong>, et au-delà.
-                </p>
+                <blockquote class="royal-quote">
+                    <p class="text-xl">« Le sport constitue un puissant levier de développement humain, d’intégration sociale et de rayonnement international. »</p>
+                    <cite class="block text-right mt-2 font-semibold">— Sa Majesté le Roi Mohammed VI</cite>
+                </blockquote>
             </div>
         </div>
     </section>
 
     <!-- What We Do Section -->
-    <section id="actions" class="py-20 bg-slate-50">
+    <section id="actions" class="py-20 bg-white">
         <div class="container mx-auto px-6">
             <h2 class="text-4xl text-center section-title">Nos Actions Clés</h2>
             <div class="mt-12 grid md:grid-cols-3 gap-10">
@@ -161,13 +322,13 @@
     </section>
 
     <!-- President Section -->
-    <section id="president" class="py-20 bg-white">
+    <section id="president" class="py-20 bg-slate-50">
         <div class="container mx-auto px-6">
              <h2 class="text-4xl text-center section-title">Le Mot du Président</h2>
-            <div class="mt-12 max-w-5xl mx-auto md:flex items-center gap-12 bg-slate-50 p-8 rounded-lg shadow-inner">
+            <div class="mt-12 max-w-5xl mx-auto md:flex items-center gap-12 bg-white p-8 rounded-lg shadow-inner">
                 <div class="md:w-1/3 text-center flex-shrink-0">
                     <!-- President's Picture -->
-                    <img src="https://i.ibb.co/zVSv0TNz/1695780154666.jpg" alt="Photo de Zaki Manchette, président de l'Association JTFM" class="w-48 h-48 md:w-60 md:h-60 rounded-full mx-auto shadow-lg object-cover border-4 border-green-700">
+                    <img src="https://i.ibb.co/zVSv0TNz/1695780154666.jpg" alt="Photo de Zaki Manchette, président de l'Association JTFM" class="w-48 h-48 md:w-60 md:h-60 rounded-full mx-auto shadow-lg object-cover border-4 border-green-700" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e2e8f0/334155?text=Pr%C3%A9sident';">
                     <h3 class="mt-4 text-2xl font-bold">Zaki MANCHETTE</h3>
                     <p class="text-gray-500">Président Fondateur</p>
                     <a href="https://www.linkedin.com/in/zaki-m-202258229/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 mt-2 inline-block social-icon">
@@ -178,7 +339,7 @@
                     <p class="text-lg text-gray-700 italic leading-relaxed">
                         "Mon parcours a commencé modestement, comme bénévole passionné dans le football amateur. Pendant près de 15 ans, j'ai gravi les échelons : dirigeant, secrétaire, et même président par intérim à l'USB Longwy, puis vice-président à Beuveille. Chaque étape m'a permis de comprendre les rouages et les besoins réels sur le terrain.
                         <br><br>
-                        Un séminaire à Dubaï avec des figures comme Luis Fernandez et Eric Olhats a élargi ma vision et renforcé ma détermination. Aujourd'hui, après avoir développé l'événementiel à l'ES Fameck, je concrétise un rêve : l'Association des Jeunes Talents Franco-Marocains. C'est l'aboutissement d'une vie dédiée au football, avec la conviction profonde que nous pouvons offrir un avenir à nos jeunes talents U17/U20/U23, en France et au-delà."
+                        Un séminaire à Dubaï avec des figures comme Luis Fernandez et Eric Olhats a élargi ma vision et renforcé ma détermination. Aujourd'hui, je concrétise un rêve : l'Association des Jeunes Talents Franco-Marocains. C'est l'aboutissement d'une vie dédiée au football, avec la conviction profonde que nous pouvons offrir un avenir à nos jeunes talents U17/U20/U23, en France et au-delà."
                     </p>
                 </div>
             </div>
@@ -238,15 +399,16 @@
         </div>
     </footer>
 
+    <!-- Lightbox HTML Structure -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="">
+        <span class="lightbox-prev">&#10094;</span>
+        <span class="lightbox-next">&#10095;</span>
+    </div>
+
+
     <script>
         // Simple script for mobile menu toggle
         const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-    </script>
-
-</body>
-</html>
+        const mobileMenu = document.getElementById('mobile-menu
